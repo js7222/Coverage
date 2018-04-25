@@ -5,8 +5,8 @@ include(ExternalProject)
 ExternalProject_Add(googletest
   URL https://github.com/google/googletest/archive/release-1.8.0.zip
   URL_HASH SHA1=667f873ab7a4d246062565fad32fb6d8e203ee73
-  SOURCE_DIR "${CMAKE_BINARY_DIR}/test/gtest-src"
-  BINARY_DIR "${CMAKE_BINARY_DIR}/test/gtest-build"
+  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/gtest-src"
+  BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/gtest-build"
   CONFIGURE_COMMAND ""
   BUILD_COMMAND     ""
   INSTALL_COMMAND   ""
