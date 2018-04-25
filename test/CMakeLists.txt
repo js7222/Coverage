@@ -17,6 +17,11 @@ target_include_directories(gtest INTERFACE
   "${CMAKE_BINARY_DIR}/test/gtest-src/include" )
 
 add_executable(mytest mytest.cc)
-include_directories(${CMAKE_SOURCE_DIR}/src)
-target_link_libraries(mytest pendulum sudoku gtest_main)
+target_link_libraries(mytest main gtest_main)
+target_include_directories(mytest PRIVATE ${CMAKE_SOURCE_DIR}/src)
 add_test(NAME mytest COMMAND mytest)
+
+add_custom_target(ctest COMMAND ${CMAKE_CTEST_COMMAND})
+if (ENABLE_COVERAGE MATCHES ON)
+  setup_target_for_coverage(NAME coverageTarget EXECUTABLE ctest "testResults")
+endif()
